@@ -8,6 +8,8 @@
     <div><span>Last update: </span><span id="time-container"></span></div>
     <button onclick="getUsers()">Get user data</button>
     <div id="result-container"></div>
+    <input type="text" placeholder="Search in documents" />
+    <button onclick="searchData()">Search</button>
 </body>
 <script>
     var xhr = null;
@@ -39,6 +41,17 @@
         // Send the request over the network
         xhr.send(null);
     }
+
+    function searchData() {
+        console.log("Search clicked...");
+        xhr = getXmlHttpRequestObject();
+        xhr.onreadystatechange = dataCallback;
+        // asynchronous requests
+        xhr.open("GET", "https://flask-skeleton-6axry37qya-nw.a.run.app/users", true);
+        // Send the request over the network
+        xhr.send(null);
+    }
+
     function getDate() {
         date = new Date().toString();
 
